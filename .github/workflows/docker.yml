@@ -1,0 +1,56 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Build and push minimized Zephyr CI docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      zephyr_ci_image_tag:
+        Description: Zephyr CI docker image
+        required: true
+        default: 'v0.28.4'
+
+env:
+  ZEPHYR_CI_IMAGE_TAG: ${{ github.event.inputs.zephyr_ci_image_tag || 'v0.28.4' }}
+
+jobs:
+  build-and-push-docker-ci-image:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 #v5.0.0
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef #v3.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate docker related variables
+        id: docker_vars
+        run: |
+          safe_repo_name=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+          docker_ci_tag="${ZEPHYR_CI_IMAGE_TAG}-$(date -u +'%Y%m%d-%H%M%S')-${GITHUB_SHA:0:8}"
+          docker_ghcr_registry="ghcr.io/${safe_repo_name}/ci"
+
+          echo "docker_ci_tag=${docker_ci_tag}" >> "$GITHUB_OUTPUT"
+          echo "docker_ghcr_registry=${docker_ghcr_registry}" >> "$GITHUB_OUTPUT"
+
+      - name: Build and (optionally) push docker image
+        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 #v6.18.0
+        with:
+          context: .
+          # Only push the image when building on the main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
+          build-args: |
+            CI_IMAGE_VERSION=${{ env.ZEPHYR_CI_IMAGE_TAG }}
+          tags: |
+            ${{ steps.docker_vars.outputs.docker_ghcr_registry }}:${{ steps.docker_vars.outputs.docker_ci_tag }}
