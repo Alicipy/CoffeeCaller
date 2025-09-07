@@ -95,7 +95,7 @@ Execute all commands in the workspace `cc_ws`.
 
 ```shell
 west build -b <board_name> <path_to_application>
-west build -b tiac_coffeecaller ./coffeecaller/applications/coffeecaller
+west build -b tiac_coffeecaller ./CoffeeCaller/applications/coffeecaller
 ```
 
 ### Flashing to the board
