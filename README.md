@@ -71,7 +71,7 @@ pip install west
 Setup the workspace and clone the repository with all modules and Zephyr:
 
 ```shell
-west init -m https://github.com/CoffeeCaller/CoffeeCaller
+west init -m https://github.com/Alicipy/CoffeeCaller
 west update
 ```
 
