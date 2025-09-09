@@ -113,7 +113,7 @@ Executing (a subset of) tests for all supported boards:
 ```shell
 west twister -T <path_to_test_folder>
 # example to execute all integration tests in `tests` folder
-west twister --integration -T ./coffeecaller/tests
+west twister --integration -T ./CoffeeCaller/tests
 # example to execute all tests for `native_sim`
-west twister -p native_sim -T ./coffeecaller
+west twister -p native_sim -T ./CoffeeCaller
 ```
