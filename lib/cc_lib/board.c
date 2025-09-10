@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 #include "cc_lib/board.h"
 
 #include "cc_lib/aldrin.h"

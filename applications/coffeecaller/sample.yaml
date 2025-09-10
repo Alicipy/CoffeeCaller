@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 sample:
   name: CC CoffeeCall App
   description: App that combines the subsystems for the coffeecaller.

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 rsource "cc_broadcast/Kconfig"
 rsource "cc_coffeecall/Kconfig"
 rsource "cc_temperature/Kconfig"
