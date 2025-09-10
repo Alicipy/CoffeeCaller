@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 if(CONFIG_CC_BROADCAST_SUBSYS)
 	zephyr_library()
 	zephyr_library_sources(

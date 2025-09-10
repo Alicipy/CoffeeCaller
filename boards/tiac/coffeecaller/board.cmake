@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2025 andreaskurz
+#
 # SPDX-License-Identifier: Apache-2.0
 
 board_runner_args(pyocd "--target=nrf52840" "--frequency=24000000")
