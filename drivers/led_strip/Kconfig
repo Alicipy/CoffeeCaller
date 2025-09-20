@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 config FAKE_LED_STRIP
 	bool "Fake LED STRIP"
 	default y

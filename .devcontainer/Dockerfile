@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 andreaskurz
+#
+# SPDX-License-Identifier: Apache-2.0
+
 ARG ZEPHYR_TAG=latest
 FROM zephyrprojectrtos/ci:${ZEPHYR_TAG}
 
