@@ -69,7 +69,7 @@ menu "CoffeeCaller Broadcast Subsystem"
 
     config OPENTHREAD_NETWORKKEY
         string
-        default "c0:ff:ee:ca:ll:ee:aa:bb:cc:dd:ee:ff:cc:c0:ff:ee"
+        default "c0:ff:ee:ca:11:ee:aa:bb:cc:dd:ee:ff:cc:c0:ff:ee"
 
     config OPENTHREAD_CHANNEL
         int
