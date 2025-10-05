@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 name: "Integration checks"
 
 on:
@@ -12,6 +16,17 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  license-compliance:
+    name: "License checks"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 #v5.0.0
+
+      - name: Check license information using REUSE
+        uses: fsfe/reuse-action@bb774aa972c2a89ff34781233d275075cbddf542 #v5.0.0
+
   build-and-test:
     name: "Build and test coffeecaller"
     runs-on: ubuntu-latest

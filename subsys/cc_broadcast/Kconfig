@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 menu "CoffeeCaller Broadcast Subsystem"
     config CC_BROADCAST_SUBSYS
         bool "Enable CoffeeCaller Broadcast Subsystem"

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 description: |
   A fake LED strip driver for testing purposes in Zephyr.
   This binding describes a simulated LED strip with a configurable number
