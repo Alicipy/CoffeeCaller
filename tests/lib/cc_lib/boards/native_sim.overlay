@@ -27,6 +27,6 @@
 
 
 	aliases {
-		buzzer0 = &test_pwm_led0;
+		pwm-buzzer0 = &test_pwm_led0;
 	};
 };

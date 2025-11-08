@@ -15,6 +15,6 @@ tests:
   subsys.cc_broadcast.test_compilable:
     #depends_on: openthread
     platform_allow:
-      - tiac_coffeecaller
+      - coffeecaller_nrf52/nrf52840
     integration_platforms:
-      - tiac_coffeecaller
+      - coffeecaller_nrf52/nrf52840

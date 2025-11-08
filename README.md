@@ -39,7 +39,7 @@ This project is still in development, and multiple features are still missing.
 
 We tested the code on the following boards:
 
-- [TiaC CoffeCaller](https://github.com/tiacsys/ecad-coffeecaller)
+- [TiaC CoffeCaller](https://github.com/tiacsys/ecad-coffeecaller), board definition files in the [TiaC Systems Bridle repository](https://github.com/tiacsys/bridle)
 - ``native_sim``
 
 Other boards may work but are not actively tested.
@@ -101,12 +101,12 @@ Execute all commands in the workspace `cc_ws`.
 
 ```shell
 west build -b <board_name> <path_to_application>
-west build -b tiac_coffeecaller ./CoffeeCaller/applications/coffeecaller
+west build -b coffeecaller_nrf52/nrf52840 ./CoffeeCaller/applications/coffeecaller
 ```
 
 ### Flashing to the board
 
-The `tiac_coffeecaller` board has an uf2 bootloader. So connect the board and after mounting, do:
+The `coffeecaller_nrf52/nrf52840` board has an uf2 bootloader. So connect the board and after mounting, do:
 
 ```
 west flash -r uf2

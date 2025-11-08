@@ -6,6 +6,8 @@ manifest:
   remotes:
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
+    - name: tiacsys
+      url-base: https://github.com/tiacsys
 
   projects:
     - name: zephyr
@@ -22,3 +24,8 @@ manifest:
           - mcuboot
           - open-amp
           - openthread
+          - lvgl
+    - name: bridle
+      remote: tiacsys
+      revision: v4.2.1
+      clone-depth: 0
