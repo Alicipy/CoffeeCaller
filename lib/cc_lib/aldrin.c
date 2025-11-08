@@ -13,7 +13,7 @@
 LOG_MODULE_REGISTER(cc_aldrin);
 
 static uint8_t num_of_timer_repeats = 0;
-static const struct pwm_dt_spec buzzer0 = PWM_DT_SPEC_GET(DT_ALIAS(buzzer0));
+static const struct pwm_dt_spec pwm_buzzer0 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_buzzer0));
 
 static void buzz_stop(struct k_timer *timer_id);
 static void buzz_repeat(struct k_timer *timer_id);
@@ -24,12 +24,12 @@ K_TIMER_DEFINE(aldrin_buzzer_repeater, buzz_repeat, NULL);
 void buzz_start(void)
 {
 	// Values determined via try and error
-	pwm_set_dt(&buzzer0, PWM_HZ(200) / 2, PWM_HZ(4000) / 4);
+	pwm_set_dt(&pwm_buzzer0, PWM_HZ(200) / 2, PWM_HZ(4000) / 4);
 }
 
 static void buzz_stop(struct k_timer *timer_id)
 {
-	pwm_set_pulse_dt(&buzzer0, 0);
+	pwm_set_pulse_dt(&pwm_buzzer0, 0);
 }
 
 static void buzz_repeat(struct k_timer *timer_id)
@@ -48,8 +48,8 @@ static void buzz_repeat(struct k_timer *timer_id)
 
 void aldrin_init(void)
 {
-	if (!pwm_is_ready_dt(&buzzer0)) {
-		LOG_ERR("Error: PWM device %s is not ready\n", buzzer0.dev->name);
+	if (!pwm_is_ready_dt(&pwm_buzzer0)) {
+		LOG_ERR("Error: PWM device %s is not ready\n", pwm_buzzer0.dev->name);
 		return;
 	}
 

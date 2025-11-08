@@ -53,7 +53,7 @@
 	aliases {
 		sw0 = &button0;
 		led-strip = &led_strip;
-		buzzer0 = &pwm_led0;
+		pwm-buzzer0 = &pwm_led0;
 		watchdog0 = &counter_watchdog;
 	};
 };

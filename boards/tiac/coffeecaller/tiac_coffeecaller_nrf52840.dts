@@ -111,7 +111,7 @@
 
 	aliases {
 		pwm-led0 = &pwm_led0;
-		buzzer0 = &pwm_led0;
+		pwm-buzzer0 = &pwm_led0;
 		sw0 = &button0;
 		sw1 = &button1;
 		sw2 = &button2;
