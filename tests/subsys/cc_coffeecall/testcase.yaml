@@ -7,9 +7,11 @@ common:
   platform_allow:
     - native_sim
     - tiac_coffeecaller
+    - coffeecaller_nrf52/nrf52840
   integration_platforms:
     - native_sim
     - tiac_coffeecaller
+    - coffeecaller_nrf52/nrf52840
   harness: shell
 
 

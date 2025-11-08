@@ -9,6 +9,7 @@ common:
   integration_platforms:
   - native_sim
   - tiac_coffeecaller
+  - coffeecaller_nrf52/nrf52840
 tests:
   app.coffeecaller:
     build_only: true
