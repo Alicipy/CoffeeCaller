@@ -7,9 +7,11 @@
 #include "cc_lib/leds.h"
 
 #include <zephyr/logging/log.h>
+#include <zephyr/kernel.h>
 
 LOG_MODULE_REGISTER(cc_leds);
 
+static struct k_sem lock_strip;
 
 #define STRIP_NODE       DT_ALIAS(led_strip)
 #define STRIP_NUM_PIXELS DT_PROP(DT_ALIAS(led_strip), chain_length)
@@ -46,7 +48,7 @@ void leds_set_rgb_all(const leds_color *new_color)
 	for (uint8_t i = 0; i < STRIP_NUM_PIXELS; ++i) {
 		pixels[i] = *new_color;
 	}
-	update_strip();
+  k_sem_give(&lock_strip);
 }
 
 void leds_set_rgb_at_pos(const leds_color *new_color, uint8_t pos)
@@ -62,7 +64,7 @@ void leds_set_rgb_at_pos(const leds_color *new_color, uint8_t pos)
 	}
 
 	pixels[pos] = *new_color;
-	update_strip();
+  k_sem_give(&lock_strip);
 }
 
 void leds_set_all_off(void)
@@ -75,3 +77,14 @@ uint8_t leds_get_num_of_pixels(void)
 {
 	return STRIP_NUM_PIXELS;
 }
+
+static void led_thread(void *p1, void *p2, void *p3){
+  k_sem_init(&lock_strip, 0, 1);
+  leds_set_all_off();
+  while (1) {
+    k_sem_take(&lock_strip, K_FOREVER);
+    update_strip();
+  }
+}
+
+K_THREAD_DEFINE(cc_led_strip, 512, led_thread, NULL, NULL, NULL, 10, 0, 0);
