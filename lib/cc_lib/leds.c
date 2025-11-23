@@ -7,9 +7,9 @@
 #include "cc_lib/leds.h"
 
 #include <zephyr/logging/log.h>
+#include <zephyr/kernel.h>
 
 LOG_MODULE_REGISTER(cc_leds);
-
 
 #define STRIP_NODE       DT_ALIAS(led_strip)
 #define STRIP_NUM_PIXELS DT_PROP(DT_ALIAS(led_strip), chain_length)
@@ -25,6 +25,14 @@ static void update_strip(void)
 		LOG_ERR("couldn't update strip: %d", status);
 	}
 }
+
+static void leds_work_handler(struct k_work *work)
+{
+	ARG_UNUSED(work);
+	update_strip();
+}
+
+K_WORK_DEFINE(leds_update_strip_work, leds_work_handler);
 
 // Public functions
 void leds_init(void)
@@ -46,7 +54,7 @@ void leds_set_rgb_all(const leds_color *new_color)
 	for (uint8_t i = 0; i < STRIP_NUM_PIXELS; ++i) {
 		pixels[i] = *new_color;
 	}
-	update_strip();
+	k_work_submit(&leds_update_strip_work);
 }
 
 void leds_set_rgb_at_pos(const leds_color *new_color, uint8_t pos)
@@ -62,7 +70,7 @@ void leds_set_rgb_at_pos(const leds_color *new_color, uint8_t pos)
 	}
 
 	pixels[pos] = *new_color;
-	update_strip();
+	k_work_submit(&leds_update_strip_work);
 }
 
 void leds_set_all_off(void)
