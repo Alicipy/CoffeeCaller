@@ -17,13 +17,15 @@ if [ ! -d ".west" ]; then
     west init -l $REPO_NAME
 fi
 
-# Put .clangd file in expected location by clangd
-ln -s $REPO_NAME/.devcontainer/.clangd
+if [ ! -f .clangd ]; then
+    ln -s $REPO_NAME/.devcontainer/.clangd
+fi
+
+if [ ! -f .clang-format ]; then
+    ln -s zephyr/.clang-format
+fi
 
 # Fetch upstream modules and setup tools
 west update
 
 pip3 install --upgrade --requirement zephyr/scripts/requirements.txt
-
-# Put .clang-format file in expected location by clangd
-ln -s zephyr/.clang-format
