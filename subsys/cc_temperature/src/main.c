@@ -77,4 +77,4 @@ static void temperature_read_thread(void *a, void *b, void *c)
     }
 }
 
-K_THREAD_DEFINE(cc_temperature_thread, 1024, temperature_read_thread, NULL, NULL, NULL, K_PRIO_COOP(7), 0, 0);
+K_THREAD_DEFINE(cc_temperature_thread, 2048, temperature_read_thread, NULL, NULL, NULL, K_PRIO_COOP(7), 0, 0);
