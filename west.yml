@@ -12,7 +12,7 @@ manifest:
   projects:
     - name: zephyr
       remote: zephyrproject-rtos
-      revision: v4.2.0
+      revision: v4.4.0
       clone-depth: 1
       import:
         name-allowlist:
@@ -21,11 +21,12 @@ manifest:
           - hal_nordic
           - libmetal
           - mbedtls
+          - tf-psa-crypto # required by mbedtls since Zephyr 4.4
           - mcuboot
           - open-amp
           - openthread
           - lvgl
     - name: bridle
       remote: tiacsys
-      revision: v4.2.1
+      revision: v4.4.0
       clone-depth: 0

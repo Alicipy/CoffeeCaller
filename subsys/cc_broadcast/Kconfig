@@ -83,6 +83,10 @@ menu "CoffeeCaller Broadcast Subsystem"
         string
         default "CoffeeCaller"
 
+    config NVS
+        bool
+        default y
+
     endif # TRANSPORT_OPENTHREAD
 
 endmenu
