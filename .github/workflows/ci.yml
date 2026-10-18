@@ -54,6 +54,8 @@ jobs:
           west twister --integration -T ./coffeecaller/applications
 
       - name: Run all tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1
         run: |
           west twister \
             --outdir twister-out --inline-logs \
