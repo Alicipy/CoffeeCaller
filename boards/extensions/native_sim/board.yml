@@ -4,3 +4,6 @@
 
 board:
   extend: native_sim
+  variants:
+    - name: coffeecaller
+      qualifier: native
