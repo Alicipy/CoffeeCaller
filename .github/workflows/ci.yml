@@ -59,7 +59,7 @@ jobs:
         run: |
           west twister \
             --outdir twister-out --inline-logs \
-            --coverage --coverage-basedir ./coffeecaller \
+            --coverage --coverage-basedir ./coffeecaller --gcov-tool gcov \
             -T ./coffeecaller/tests
 
       - name: Upload Twister Reports
