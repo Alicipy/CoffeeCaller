@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Alicipy <dev@stefankraus.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+identifier: native_sim/native/coffeecaller
+type: native
+simulation:
+  - name: native
+arch: posix
+testing:
+  default: true

@@ -7,7 +7,7 @@ sample:
   description: App that combines the subsystems for the coffeecaller.
 common:
   integration_platforms:
-  - native_sim
+  - native_sim/native/coffeecaller
   - coffeecaller_nrf52/nrf52840
 tests:
   app.coffeecaller:
